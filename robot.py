@@ -7,4 +7,6 @@ class Robot:
 
     def attack(self, dinosaur):
         health = dinosaur - self.active_weapon.attack_power
+        if health <= 0:
+            health = 0
         return health

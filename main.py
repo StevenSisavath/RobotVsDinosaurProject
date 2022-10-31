@@ -48,4 +48,4 @@ It's a tie! Neither {self.robot.name} or {self.dinosaur.name} win!
 ''')
 
 Battlefield1 = Battlefield()
-Battlefield1.run_game()
+Battlefield1.run_game() #test run Robot vs. Dinosaur project
