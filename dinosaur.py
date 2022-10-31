@@ -8,4 +8,4 @@ class Dinosaur:
 
     def attack(self, robot):
         health = robot - self.attack_power
-        print(f'The robot has {health} health remaing!')
+        return health
