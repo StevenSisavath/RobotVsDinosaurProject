@@ -1,13 +1,20 @@
 from dinosaur import Dinosaur
 from robot import Robot
+from fleet import Fleet
+from herd import Herd
+import random
 class Battlefield:
     
     def __init__(self):
-        self.robot = Robot('Scrappy')
-        self.dinosaur = Dinosaur('Smallzilla', 20)
+        self.the_fleet = Fleet()
+        self.the_herd = Herd()
+        self.robot = random.choice(self.the_fleet.fleet)
+        self.dinosaur = random.choice(self.the_herd.herd)
 
     def run_game(self):
         self.display_welcome()
+        self.battle_phase()
+        self.display_winner()
         self.battle_phase()
         self.display_winner()
 
@@ -32,17 +39,19 @@ Only one side can win!
                 battling = True
             elif self.robot.health <= 0 or self.dinosaur.health <= 0:
                 battling = False
+                
 
     def display_winner(self):
         if self.robot.health <= 0 and self.dinosaur.health > 0:
             print(f'''{self.dinosaur.name} made {self.robot.name} extinct!
-{self.dinosaur.name} is the winner!
+{self.dinosaur.name} is the champion!
 ''')
         elif self.dinosaur.health <= 0 and self.robot.health > 0:
             print(f'''{self.robot.name} made {self.dinosaur.name} extinct!
-{self.robot.name} is the winner!
+{self.robot.name} is the champion!
 ''')
         elif self.dinosaur.health <= 0 and self.robot.health <=0:
             print(f'''{self.robot.name} and {self.dinosaur.name} are both extinct!
 It's a tie! Neither {self.robot.name} or {self.dinosaur.name} win!
 ''')
+        
