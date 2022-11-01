@@ -3,18 +3,19 @@ from robot import Robot
 from fleet import Fleet
 from herd import Herd
 import random
+the_fleet = Fleet()
+the_herd = Herd()
 class Battlefield:
     
     def __init__(self):
-        self.the_fleet = Fleet()
-        self.the_herd = Herd()
-        self.robot = random.choice(self.the_fleet.fleet)
-        self.dinosaur = random.choice(self.the_herd.herd)
+        self.robot = random.choice(the_fleet.fleet)
+        self.dinosaur = random.choice(the_herd.herd)
 
     def run_game(self):
         self.display_welcome()
         self.battle_phase()
         self.display_winner()
+        self.remove_dino_and_robot()
 
     def display_welcome(self):
         print('''
@@ -54,3 +55,6 @@ Only one side can win!
 It's a tie! Neither {self.robot.name} or {self.dinosaur.name} win!
 ''')
         
+    def remove_dino_and_robot(self):
+        the_fleet.fleet.remove(self.robot)
+        the_herd.herd.remove(self.dinosaur)
