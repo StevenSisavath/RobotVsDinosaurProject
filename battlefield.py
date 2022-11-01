@@ -15,8 +15,6 @@ class Battlefield:
         self.display_welcome()
         self.battle_phase()
         self.display_winner()
-        self.battle_phase()
-        self.display_winner()
 
     def display_welcome(self):
         print('''
@@ -26,9 +24,10 @@ Only one side can win!
 
     def battle_phase(self):
         battling = True
+        attack = ['tail whip', 'dino slash', 'head charge', 'stomp', 'claw cut']
         while battling:
             self.robot.health = self.dinosaur.attack(self.robot.health)
-            print(f'''{self.dinosaur.name} hit {self.robot.name} with a tail attack for {self.dinosaur.attack_power} damage!
+            print(f'''{self.dinosaur.name} hit {self.robot.name} with a {random.choice(attack)} for {self.dinosaur.attack_power} damage!
 {self.robot.name} has {self.robot.health} health remaining!
             ''')
             self.dinosaur.health = self.robot.attack(self.dinosaur.health)
@@ -44,11 +43,11 @@ Only one side can win!
     def display_winner(self):
         if self.robot.health <= 0 and self.dinosaur.health > 0:
             print(f'''{self.dinosaur.name} made {self.robot.name} extinct!
-{self.dinosaur.name} is the champion!
+{self.dinosaur.name} is the Dino Champion!
 ''')
         elif self.dinosaur.health <= 0 and self.robot.health > 0:
             print(f'''{self.robot.name} made {self.dinosaur.name} extinct!
-{self.robot.name} is the champion!
+{self.robot.name} is the Robot Champion!
 ''')
         elif self.dinosaur.health <= 0 and self.robot.health <=0:
             print(f'''{self.robot.name} and {self.dinosaur.name} are both extinct!
